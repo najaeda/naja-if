@@ -76,6 +76,6 @@ TEST(NajaIFTest, test0) {
   EXPECT_EQ(2, dbInterface.getLibraryInterfaces().size());
   auto library0Interface = dbInterface.getLibraryInterfaces()[0];
   EXPECT_EQ(0, library0Interface.getId());
-  EXPECT_EQ("LIB0", library0Interface.getName());
+  EXPECT_EQ(std::string("LIB0"), library0Interface.getName());
   EXPECT_EQ(1, library0Interface.getSnlDesignInterfaces().size());
 }
