@@ -19,24 +19,26 @@ capnp_generate_cpp(najaNLInterfaceSources najaNLInterfaceHeaders ${CAPNPC_SRC_PR
 capnp_generate_cpp(najaNLImplementationSources najaNLImplementationHeaders ${CAPNPC_SRC_PREFIX}/naja_nl_implementation.capnp)
 
 add_library(naja_if STATIC
-    ${NajaCommonSources} ${NajaNLInterfaceSources}
-    ${NajaNLImplementationSources}
+    ${najaCommonSources} ${najaNLInterfaceSources}
+    ${najaNLImplementationSources}
 )
 
 target_link_libraries(naja_if PUBLIC CapnProto::capnp)
 target_include_directories(naja_if PUBLIC ${CMAKE_CURRENT_BINARY_DIR})
 
-include(FetchContent)
-FetchContent_Declare(
-  googletest
-  # Specify the commit you depend on and update it regularly.
-  URL https://github.com/google/googletest/archive/5376968f6948923e2411081fd9372e71a59d8e77.zip
-)
-# For Windows: Prevent overriding the parent project's compiler/linker settings
-set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
-FetchContent_MakeAvailable(googletest)
-
-include(CTest)
-include(GoogleTest)
-enable_testing()
-add_subdirectory(test)
+if(PROJECT_IS_TOP_LEVEL)
+  include(FetchContent)
+  FetchContent_Declare(
+    googletest
+    # Specify the commit you depend on and update it regularly.
+    URL https://github.com/google/googletest/archive/52eb8108c5bdec04579160ae17225d66034bd723.zip
+    DOWNLOAD_EXTRACT_TIMESTAMP TRUE
+  )
+  # For Windows: Prevent overriding the parent project's compiler/linker settings
+  set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+  FetchContent_MakeAvailable(googletest)
+  include(CTest)
+  include(GoogleTest)
+  enable_testing()
+  add_subdirectory(test)
+endif(PROJECT_IS_TOP_LEVEL)
