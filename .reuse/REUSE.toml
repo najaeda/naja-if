@@ -1,0 +1,11 @@
+version = 1
+
+[[annotations]]
+path = [".github/** .gitignore"]
+SPDX-FileCopyrightText = "2025 The Naja Authors"
+SPDX-License-Identifier = "Apache-2.0"
+
+[[annotations]]
+path = "README.md"
+SPDX-FileCopyrightText = "2025 The Naja Authors"
+SPDX-License-Identifier = "Apache-2.0""
