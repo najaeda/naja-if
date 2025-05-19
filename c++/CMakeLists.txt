@@ -11,6 +11,20 @@ project(naja-if)
 set(CMAKE_CXX_STANDARD 20)
 find_package(CapnProto REQUIRED)
 
+add_library(sanitizers_config INTERFACE)
+option(ENABLE_SANITIZERS "Enable sanitizers in compilation" OFF)
+if(ENABLE_SANITIZERS)
+  target_compile_options(sanitizers_config INTERFACE
+    -fsanitize=address
+    -fno-omit-frame-pointer
+    #-fsanitize=thread
+  )
+  target_link_options(sanitizers_config INTERFACE
+    -fsanitize=address
+    #-fsanitize=thread
+  )
+endif(ENABLE_SANITIZERS)
+
 set(CAPNPC_SRC_PREFIX "${PROJECT_SOURCE_DIR}/../schema" CACHE STRING "" FORCE)
 set(CAPNPC_OUTPUT_DIR ${CMAKE_CURRENT_BINARY_DIR})
 
@@ -23,7 +37,7 @@ add_library(naja_if STATIC
     ${najaNLImplementationSources}
 )
 
-target_link_libraries(naja_if PUBLIC CapnProto::capnp)
+target_link_libraries(naja_if PUBLIC CapnProto::capnp sanitizers_config)
 target_include_directories(naja_if PUBLIC ${CMAKE_CURRENT_BINARY_DIR})
 
 if(PROJECT_IS_TOP_LEVEL)
