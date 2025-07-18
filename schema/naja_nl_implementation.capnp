@@ -6,8 +6,6 @@
 
 using NajaCommon = import "naja_common.capnp";
 
-
-
 struct DBImplementation {
   id                      @0 : UInt8 = 1;
   libraryImplementations  @1 : List(LibraryImplementation);

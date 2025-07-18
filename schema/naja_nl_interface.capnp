@@ -13,9 +13,10 @@ enum Direction {
 }
 
 enum DesignType {
-  standard  @0;
-  blackbox  @1;
-  primitive @2;
+  standard      @0;
+  userBlackbox  @1;
+  autoBlackbox  @2;
+  primitive     @3;
 }
 
 struct SNLDesignInterface {
