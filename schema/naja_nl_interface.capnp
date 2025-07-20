@@ -7,9 +7,10 @@
 using NajaCommon = import "naja_common.capnp";
 
 enum Direction {
-  input   @0;
-  output  @1;
-  inout   @2;
+  input     @0;
+  output    @1;
+  inout     @2;
+  undefined @3;
 }
 
 enum DesignType {
