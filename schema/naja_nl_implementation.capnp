@@ -48,6 +48,7 @@ struct DBImplementation {
         name            @1 : Text;
         modelReference  @2 : NajaCommon.DesignReference;
         instParameters  @3 : List(InstParameter);
+        rtlInfos        @4 : NajaCommon.RTLInfos;
       }
 
       struct Net {
@@ -70,21 +71,24 @@ struct DBImplementation {
         name        @1 : Text;
         type        @2 : NetType;
         components  @3 : List(NetComponentReference);
+        rtlInfos    @4 : NajaCommon.RTLInfos;
       }
 
       struct BusNet {
         id        @0 : UInt32 = 0;
         name      @1 : Text;
-        msb       @2 : Int32; 
+        msb       @2 : Int32;
         lsb       @3 : Int32;
         bits      @4 : List(BusNetBit);
+        rtlInfos  @5 : NajaCommon.RTLInfos;
       }
 
       struct BusNetBit {
-        bit         @0 : UInt32;    
+        bit         @0 : UInt32;
         destroyed   @1 : Bool;
         type        @2 : NetType;
         components  @3 : List(NetComponentReference);
+        rtlInfos    @4 : NajaCommon.RTLInfos;
       }
     }
 
