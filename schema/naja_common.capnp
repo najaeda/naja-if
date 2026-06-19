@@ -22,3 +22,26 @@ struct Property {
   name    @0 : Text;
   values  @1 : List(PropertyValue);
 }
+
+# RTL source metadata (see naja's SNLRTLInfos.h).
+struct SourceLoc {
+  file      @0 : Text;    # source file path
+  line      @1 : UInt32;
+  endLine   @2 : UInt32;
+  column    @3 : UInt16;
+  endColumn @4 : UInt16;
+}
+
+# One arbitrary extra key/value info.
+struct RTLInfo {
+  name  @0 : Text;
+  value @1 : Text;
+}
+
+# Per-object RTL infos: an optional source location plus an optional
+# set of extra key/value infos. sourceLoc is a pointer field, so it reads
+# back null (hasSourceLoc() == false) when absent; infos is empty when none.
+struct RTLInfos {
+  sourceLoc @0 : SourceLoc;
+  infos     @1 : List(RTLInfo);
+}

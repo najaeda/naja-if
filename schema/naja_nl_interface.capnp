@@ -27,6 +27,7 @@ struct SNLDesignInterface {
   type        @3 : DesignType; # = Standard
   terms       @4 : List(Term);
   parameters  @5 : List(Parameter);
+  rtlInfos    @6 : NajaCommon.RTLInfos;
 
   enum ParameterType {
     decimal @0;
@@ -52,14 +53,16 @@ struct SNLDesignInterface {
     id        @0 : UInt32 = 0;
     name      @1 : Text;
     direction @2 : Direction;
+    rtlInfos  @3 : NajaCommon.RTLInfos;
   }
-  
+
   struct BusTerm {
     id        @0 : UInt32 = 0;
     name      @1 : Text;
     direction @2 : Direction;
-    msb       @3 : Int32; 
+    msb       @3 : Int32;
     lsb       @4 : Int32;
+    rtlInfos  @5 : NajaCommon.RTLInfos;
   }
 }
 
