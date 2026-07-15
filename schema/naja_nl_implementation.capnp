@@ -49,6 +49,18 @@ struct DBImplementation {
         modelReference  @2 : NajaCommon.DesignReference;
         instParameters  @3 : List(InstParameter);
         rtlInfos        @4 : NajaCommon.RTLInfos;
+        constantDriver  @5 : ConstantDriver;
+        initValue       @6 : NajaCommon.LogicVector;
+        resetValue      @7 : NajaCommon.LogicVector;
+
+        struct ConstantDriver {
+          enum Kind {
+            assign @0;
+            supply @1;
+          }
+          value @0 : NajaCommon.LogicVector;
+          kind  @1 : Kind;
+        }
       }
 
       struct Net {
@@ -60,10 +72,6 @@ struct DBImplementation {
 
       enum NetType {
         standard @0;
-        assign0  @1;
-        assign1  @2;
-        supply0  @3;
-        supply1  @4;
       }
 
       struct ScalarNet {

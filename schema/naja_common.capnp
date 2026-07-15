@@ -45,3 +45,11 @@ struct RTLInfos {
   sourceLoc @0 : SourceLoc;
   infos     @1 : List(RTLInfo);
 }
+
+# Width-exact four-state logic value. Bit zero is the least-significant bit;
+# aval/bval use 00=0, 10=1, 11=X, 01=Z in little-endian 64-bit words.
+struct LogicVector {
+  width @0 : UInt64;
+  aval  @1 : List(UInt64);
+  bval  @2 : List(UInt64);
+}
