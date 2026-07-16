@@ -70,16 +70,11 @@ struct DBImplementation {
         }
       }
 
-      enum NetType {
-        standard @0;
-      }
-
       struct ScalarNet {
         id          @0 : UInt32 = 0;
         name        @1 : Text;
-        type        @2 : NetType;
-        components  @3 : List(NetComponentReference);
-        rtlInfos    @4 : NajaCommon.RTLInfos;
+        components  @2 : List(NetComponentReference);
+        rtlInfos    @3 : NajaCommon.RTLInfos;
       }
 
       struct BusNet {
@@ -94,9 +89,8 @@ struct DBImplementation {
       struct BusNetBit {
         bit         @0 : UInt32;
         destroyed   @1 : Bool;
-        type        @2 : NetType;
-        components  @3 : List(NetComponentReference);
-        rtlInfos    @4 : NajaCommon.RTLInfos;
+        components  @2 : List(NetComponentReference);
+        rtlInfos    @3 : NajaCommon.RTLInfos;
       }
     }
 
