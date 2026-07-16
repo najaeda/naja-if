@@ -1,0 +1,22 @@
+# SPDX-FileCopyrightText: 2025 The Naja authors <https://github.com/najaeda/naja/blob/main/AUTHORS>
+#
+# SPDX-License-Identifier: Apache-2.0
+
+"""Bazel module for naja-if, added so the parent naja repo's own Bazel
+migration (see internal/bazel-migration-plan.md in najaeda/naja) can
+depend on this as a real Bazel module (bazel_dep + git_override) instead
+of a non-module git_repository + placeholder overlay.
+
+Only the schema/*.capnp -> C++ codegen (mirroring c++/CMakeLists.txt's
+three capnp_generate_cpp() calls) is exposed here, since that's the only
+part of naja-if the parent naja repo actually consumes; naja-if's own
+`c++/` standalone library + test executable (used only for naja-if's own
+CI, not by any consumer) is not ported to Bazel.
+"""
+
+module(
+    name = "naja-if",
+    version = "0.0.0",
+)
+
+bazel_dep(name = "capnp-cpp", version = "1.4.0")
