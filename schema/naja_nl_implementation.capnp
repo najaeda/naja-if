@@ -60,10 +60,12 @@ struct DBImplementation {
 
       enum NetType {
         standard @0;
-        assign0  @1;
-        assign1  @2;
-        supply0  @3;
-        supply1  @4;
+        supply0  @1;
+        supply1  @2;
+        assign0  @3;
+        assign1  @4;
+        assignX  @5;
+        assignZ  @6;
       }
 
       struct ScalarNet {
